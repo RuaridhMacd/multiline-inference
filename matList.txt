@@ -1,9 +1,8 @@
 # List of materials for multilineSearch to use
 # Leave "# " at front of all comment or unused lines
-# Format: "Z A numberdensity*A*1e-24"
+# Format: "Z A numberdensity*1e-24"
 # Last term allows for same number to be used by isotopes of the same element
 # Spaces are important for parser
-26 56 0.05 0.05 2.0 0.1
-92 235 0.12172 0.12172 2.0 0.1
-92 238 0.12019 0.12019 2.0 0.1
-94 239 0.11968 0.11968 2.0 0.1
+92 235 0.3 0.3 2.0 1.0
+94 240 0.3 0.3 2.0 1.0
+# 26 56 0.3 0.3 2.0 1.0

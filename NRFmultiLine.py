@@ -67,7 +67,8 @@ def branchNeigh_compare(emitList,deltaNeigh,numBranch,numNeigh,plotOn):
     sTListPlotBranch = []
     aListPlotBranch = []
     rListTempBranch = []
-    cListPlotBranch= []
+    cListPlotBranch = []
+    branchData = []
     
     # Use itertools.combinations to make the smallest list of all combinations of pairs
     # It doesn't include any duplicates and doesn't pair items with themselves
@@ -93,7 +94,7 @@ def branchNeigh_compare(emitList,deltaNeigh,numBranch,numNeigh,plotOn):
             sListPlotBranch.append(min([pair[0].sigmaInt[1] , pair[1].sigmaInt[1]]))
             cListPlotBranch.append(np.min([pair[0].counts,pair[1].counts]))
     
-    if len(rListTempBranch) == 0:
+    if len(rListTempBranch) == 0:#
         print('\nNo branched pairs')
         if plotOn == 1:
             plt.figure(1)
@@ -102,7 +103,7 @@ def branchNeigh_compare(emitList,deltaNeigh,numBranch,numNeigh,plotOn):
         branchData = []
         
     else:
-        # Find and print list of most significant branched lines based on cross section
+        # Find and print list of most significant branched lines based on counts
         if numBranch != None:
             
             minCListBranch = np.array(cListPlotBranch)
@@ -116,7 +117,7 @@ def branchNeigh_compare(emitList,deltaNeigh,numBranch,numNeigh,plotOn):
                 for i in range(len(minCListBranch)):
                     print "[%s , %s] %s  [%s , %s] %s    [%s , %s] [%s , %s] %s %s" % ("{:3.0f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].z), "{:3.0f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].a), "{:6.3f}".format(minCListBranch[minCListBranchIndex[i]]), "{:4.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].prob), "{:4.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][1]].prob), "{:8.3f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].Elevel), "{:6.3f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].Egamma), "{:6.3f}".format(emitList[indexListBranch[minCListBranchIndex[i]][1]].Egamma), "{:6.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].alpha[1]), "{:6.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][1]].alpha[1]), "{:6.3f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].alpha[1]/emitList[indexListBranch[minCListBranchIndex[i]][1]].alpha[1]), "{:10.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][1]].counts))
             else:
-                print('\nFound %i neighbouring pairs' %len(minCListBranch) )
+                print('\nFound %i branched pairs' %len(minCListBranch) )
                 print('The %i branched pairs with largest total NRF attenuation coefficient: \n  Isotope    mu_NRF[b] branch ratio Elevel[MeV]    EGamma[MeV]          alpha     alpha_ratio  counts' % numBranch)
                 for i in range(numBranch):
                     print "[%s , %s] %s  [%s , %s] %s    [%s , %s] [%s , %s] %s %s" % ("{:3.0f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].z), "{:3.0f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].a), "{:6.3f}".format(minCListBranch[minCListBranchIndex[i]]), "{:4.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].prob), "{:4.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][1]].prob), "{:8.3f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].Elevel), "{:6.3f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].Egamma), "{:6.3f}".format(emitList[indexListBranch[minCListBranchIndex[i]][1]].Egamma), "{:6.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].alpha[1]), "{:6.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][1]].alpha[1]), "{:6.3f}".format(emitList[indexListBranch[minCListBranchIndex[i]][0]].alpha[1]/emitList[indexListBranch[minCListBranchIndex[i]][1]].alpha[1]), "{:10.2f}".format(emitList[indexListBranch[minCListBranchIndex[i]][1]].counts))
